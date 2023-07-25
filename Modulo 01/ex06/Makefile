@@ -1,17 +1,17 @@
 CC = g++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRCS = main.cpp	Zombie.cpp zombieHorde.cpp
+SRCS = main.cpp Harl.cpp 
 OBJS = $(SRCS:.cpp=.o)
-NAME = Brainz
+NAME = harlFilter
 
 %.o: %.cpp
-	$(CC) -c $(CFLAGS) $?
+	$(CC) -c $(CFLAGS) $<
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)

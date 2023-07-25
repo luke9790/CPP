@@ -7,16 +7,16 @@
 class Zombie
 {
 private:
-    std::string name;
+	std::string name;
 
 public:
-    Zombie(); // Default constructor
-    Zombie(const std::string& name); // Constructor with name parameter
-    ~Zombie(); // Destructor
+	Zombie();
+	Zombie(const std::string& name);
+	~Zombie();
 
-    void announce() const; // Member function to announce the zombie
-    static Zombie* newZombie(std::string name);
-    static void randomChump(std::string name);
+	void announce() const;
+	static Zombie* newZombie(std::string name);
+	static void randomChump(std::string name);
 };
 
 #endif

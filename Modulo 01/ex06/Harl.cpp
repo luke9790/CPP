@@ -43,17 +43,45 @@ void Harl::error(void)
 void Harl::complain(std::string level)
 {
     std::string complains[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-
     func functs[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     int i = 0;
     while (i < 4) {
         if (complains[i] == level)
-        {
-            (this->*functs[i])();
             break;
-        }
         i++;
     }
-    if (i == 4)
-        std::cout << "Level not found!" << std::endl;
+    switch (i)
+    {
+    case 0:
+        while (i < 4)
+        {
+            (this->*functs[i])();
+            i++;
+        }
+        break;
+    case 1:
+        while (i < 4)
+        {
+            (this->*functs[i])();
+            i++;
+        }
+        break;
+    case 2:
+        while (i < 4)
+        {
+            (this->*functs[i])();
+            i++;
+        }
+        break;
+    case 3:
+        while (i < 4)
+        {
+            (this->*functs[i])();
+            i++;
+        }
+        break; 
+    default:
+        std::cout << "[ " << "Probably complaining about insignificant problems" << " ]"<< std::endl;
+        break;
+    }
 }

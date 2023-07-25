@@ -2,13 +2,11 @@
 
 int main()
 {
-    // Testing newZombie function
-    Zombie* zombie1 = Zombie::newZombie("Bob");
-    zombie1->announce();
-    delete zombie1; // Don't forget to delete the dynamically allocated zombie.
+	Zombie* zombie1 = Zombie::newZombie("Bob");
+	zombie1->announce();
+	delete zombie1; 
 
-    // Testing randomChump function
-    Zombie::randomChump("Alice");
+	Zombie::randomChump("Alice");
 
-    return 0;
+	return 0;
 }

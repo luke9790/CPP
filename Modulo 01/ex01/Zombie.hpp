@@ -10,10 +10,10 @@ private:
     std::string name;
 
 public:
-    Zombie(); // Default constructor
-    ~Zombie(); // Destructor
+    Zombie();
+    ~Zombie();
 
-    void announce(); // Member function to announce the zombie
+    void announce();
     void set_name(std::string name);
 };
 

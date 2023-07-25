@@ -3,22 +3,20 @@
 
 Zombie::Zombie()
 {
-    // Default constructor
-    return;
+	return;
 }
 
-Zombie::Zombie(const std::string& name)
+Zombie::Zombie(const std::string& name) // si usa la copia per motivi di efficienza 
 {
-    this->name = name;
+	this->name = name;
 }
 
 Zombie::~Zombie()
 {
-    // Destructor
-    std::cout << name << " has been destroyed." << std::endl;
+	std::cout << name << " has been destroyed." << std::endl;
 }
 
 void Zombie::announce() const
 {
-    std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
