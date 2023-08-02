@@ -48,21 +48,21 @@ Fixed::Fixed(const int intnum)
 Fixed::Fixed(const float floatnum)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->fixed_point = roundf(floatnum * (1 << num_bits));
+	this->fixed_point = roundf(floatnum * (1 << num_bits)); // sposta il bit 1 a sinistra di num_bits posizioni. Questo è il fattore di scala per convertire il valore in una rappresentazione a precisione fissa.
 }
 
 float Fixed::toFloat() const
 {
-    return static_cast<float>(fixed_point) / (1 << num_bits);
+    return static_cast<float>(fixed_point) / (1 << num_bits); // dobbiamo dividere fixed_point per 2^num_bits. Questo è perché fixed_point ha il punto decimale spostato di num_bits posizioni a sinistra rispetto a un intero normale
 }
 
 int Fixed::toInt() const
 {
-    return fixed_point >> num_bits;
+    return fixed_point >> num_bits; // per convertire basta spostare il fixed point a destra per n_bits bits.
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
+std::ostream& operator<<(std::ostream& outputstream, const Fixed& fixed)
 {
-    os << fixed.toFloat();
-    return os;
+    outputstream << fixed.toFloat();
+    return outputstream;
 }

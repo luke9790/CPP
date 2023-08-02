@@ -124,26 +124,26 @@ Fixed Fixed::operator/(const Fixed& other) const
 
 // The 4 increment/decrement operators
 
-Fixed& Fixed::operator++()
+Fixed& Fixed::operator++() // pre
 {
     ++this->fixed_point;
     return *this;
 }
 
-Fixed Fixed::operator++(int)
+Fixed Fixed::operator++(int) // post: crea una copia temporanea che viene returnata ma aumenta il valore originale.
 {
     Fixed temp(*this);
     ++(*this);
     return temp;
 }
 
-Fixed& Fixed::operator--()
+Fixed& Fixed::operator--() // pre
 {
     --this->fixed_point;
     return *this;
 }
 
-Fixed Fixed::operator--(int)
+Fixed Fixed::operator--(int) // post: crea una copia temporanea che viene returnata ma diminuisce il valore originale.
 {
     Fixed temp(*this);
     --(*this);
@@ -152,9 +152,11 @@ Fixed Fixed::operator--(int)
 
 //  four public overloaded member functions: min, min(const), max, max(const) 
 
+// OPERATORE TERNARIO: condizione ? espressione_se_vera : espressione_se_falsa;
+
 Fixed& Fixed::min(Fixed& a, Fixed& b)
 {
-    return (a < b) ? a : b;
+    return (a < b) ? a : b;  
 }
 
 const Fixed& Fixed::min(const Fixed& a, const Fixed& b)

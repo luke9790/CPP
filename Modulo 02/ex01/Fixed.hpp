@@ -23,7 +23,7 @@ public:
 
 	float toFloat( void ) const;
 	int toInt( void ) const;
-	friend std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
+	friend std::ostream& operator<<(std::ostream& outputstream, const Fixed& fixed);
 
 };
 

@@ -25,7 +25,7 @@ public:
 	int toInt( void ) const;
 	friend std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
 
-	    // Overloaded comparison operators
+	// Overloaded comparison operators
     bool operator>(const Fixed& other) const;
     bool operator<(const Fixed& other) const;
     bool operator>=(const Fixed& other) const;
