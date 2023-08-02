@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 15:08:12 by lmasetti          #+#    #+#             */
+/*   Updated: 2023/08/01 14:04:05 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,7 +25,7 @@ int main(int ac, char* av[])
     std::string s1 = av[2];
     std::string s2 = av[3];
 
-    std::ifstream inputFile(filename.c_str());  // c_str ritorna un puntatore a stringa con carattere nullo finale, senza non va
+    std::ifstream inputFile(filename.c_str());  // richiamiamo la classe ifstream e creiamo l'oggetto inputfile che gestisce l'input.
     if (!inputFile)
     {
         std::cerr << "Error opening the input file." << std::endl;
@@ -21,7 +33,7 @@ int main(int ac, char* av[])
     }
 
     std::string outputFilename = filename + ".replace";
-    std::ofstream outputFile(outputFilename.c_str()); // c_str ritorna un puntatore a stringa con carattere nullo finale, senza non va
+    std::ofstream outputFile(outputFilename.c_str()); // richiamiamo la classe ofstream e creiamo l'oggetto Outputfile che gestisce l'output.
     if (!outputFile)
     {
         std::cerr << "Error creating or opening the output file." << std::endl;

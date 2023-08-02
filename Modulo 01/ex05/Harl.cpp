@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 15:08:21 by lmasetti          #+#    #+#             */
+/*   Updated: 2023/08/01 14:33:40 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./Harl.hpp"
 
 Harl::Harl()
@@ -46,7 +58,8 @@ void Harl::complain(std::string level)
 
     func functs[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     int i = 0;
-    while (i < 4) {
+    while (i < 4)
+	{
         if (complains[i] == level)
         {
             (this->*functs[i])();

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 15:08:25 by lmasetti          #+#    #+#             */
+/*   Updated: 2023/08/01 14:49:03 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HARL_HPP
 #define HARL_HPP
 #include <iostream>
@@ -20,5 +32,7 @@ public:
 };
 
 typedef void (Harl::*func)(void);
+// tipo_di_ritorno (NomeClasse::*nome_puntatore)(argomenti);
+// sintassi per la dichiarazione di un puntatore a funzione membro è la seguente:
 
 #endif
