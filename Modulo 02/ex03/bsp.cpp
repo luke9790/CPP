@@ -16,6 +16,11 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
     Fixed crossCA = (ca.getX() * cp.getY()) - (ca.getY() * cp.getX());
 
     // Check if the point is inside the triangle
+    // Se tutti e tre i prodotti vettoriali hanno lo stesso segno 
+    // (positivo o negativo), allora il punto si trova all'interno del triangolo. 
+    // Se hanno segni diversi, il punto si trova al di fuori del triangolo.
     return (crossAB >= 0 && crossBC >= 0 && crossCA >= 0) ||
            (crossAB <= 0 && crossBC <= 0 && crossCA <= 0);
 }
+
+// si basa sul calcolo dei vettori, del prodotto vettoriale e algoritmo punto-triangolo.
