@@ -19,7 +19,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->EnergyPoints = 50;
 	this->AttackDmg = 20;
 	this->Name = name;
-	std::cout << "ScavTrap constructor called, named: " << this->Name << std::endl;
+	std::cout << "ScavTrap constructor called for " << this->Name << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &copy) : ClapTrap(copy)

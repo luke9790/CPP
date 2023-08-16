@@ -19,7 +19,7 @@ ClapTrap::ClapTrap(std::string name)
 	this->EnergyPoints = 10;
 	this->AttackDmg = 0;
 	this->Name = name;
-	std::cout << "ClapTrap constructor called, named: " << this->Name << std::endl;
+	std::cout << "ClapTrap constructor called for " << this->Name << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& copy)

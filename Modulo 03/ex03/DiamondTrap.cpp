@@ -18,7 +18,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), Name(name + "_clap_
 	this->HitPoints = FragTrap::HitPoints;
 	this->EnergyPoints = ScavTrap::EnergyPoints;
 	this->AttackDmg = FragTrap::AttackDmg;
-	std::cout << "DiamondTrap constructor called, named: " << this->Name << std::endl;
+	std::cout << "DiamondTrap constructor called for " << this->Name << std::endl;
 }
 
 DiamondTrap::DiamondTrap(DiamondTrap const &copy) : ClapTrap(copy), FragTrap(copy), ScavTrap(copy)
@@ -48,5 +48,5 @@ void	DiamondTrap::attack(const std::string& target)
 
 void	DiamondTrap::whoAmI()
 {
-	std::cout << "DiamondTrap use whomai!\n\tis name : " << this->Name << "\n\tClapname: " << ClapTrap::Name << std::endl;
+	std::cout << "DiamondTrap use whomai!\nIts name is: " << this->Name << "\nClapname is: " << ClapTrap::Name << std::endl;
 }
