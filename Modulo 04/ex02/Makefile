@@ -1,9 +1,9 @@
 CC = g++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = polymorphism
+NAME = abstractclass
 
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) $<
