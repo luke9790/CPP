@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/30 11:46:16 by lmasetti          #+#    #+#             */
+/*   Updated: 2023/08/30 11:46:17 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./Fixed.hpp"
 
 Fixed::Fixed()
@@ -39,7 +51,7 @@ void Fixed::setRawBits(int const raw)
 	this->fixed_point = raw;
 }
 
-Fixed::Fixed(const int intnum)
+Fixed::Fixed(const int intnum) //  prendiamo l'intero intnum e spostiamo i suoi bit verso sinistra di num_bits posizioni (che è equivalente a moltiplicare per 2^num_bits). 
 {
 	std::cout << "Int constructor called" << std::endl;
 	this->fixed_point = intnum << num_bits;
@@ -48,7 +60,7 @@ Fixed::Fixed(const int intnum)
 Fixed::Fixed(const float floatnum)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->fixed_point = roundf(floatnum * (1 << num_bits)); // sposta il bit 1 a sinistra di num_bits posizioni. Questo è il fattore di scala per convertire il valore in una rappresentazione a precisione fissa.
+	this->fixed_point = roundf(floatnum * (1 << num_bits)); // converte il valore in virgola mobile floatnum in formato fixed-point moltiplicando per 2^num_bits e poi arrotondando il risultato.
 }
 
 float Fixed::toFloat() const
