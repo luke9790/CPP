@@ -1,15 +1,27 @@
-#include "./DiamondTrap.hpp"
+#include "Ice.hpp"
+#include "ICharacter.hpp"
+#include "IMateriaSource.hpp"
+#include "Cure.hpp"
+#include "MateriaSource.hpp"
+#include "Character.hpp"
+#include <iostream>
 
 int main()
 {
-	DiamondTrap eroe1;
-	DiamondTrap eroe2("Batman");
-	
-	eroe1.attack("Joker");
-	eroe1.whoAmI();
-	eroe2.whoAmI();
-	eroe2.beRepaired(120);
-	eroe2.highFivesGuys();
-	eroe2.takeDamage(99);
-    return 0;
+IMateriaSource* src = new MateriaSource();
+src->learnMateria(new Ice());
+src->learnMateria(new Cure());
+ICharacter* me = new Character("me");
+AMateria* tmp;
+tmp = src->createMateria("ice");
+me->equip(tmp);
+tmp = src->createMateria("cure");
+me->equip(tmp);
+ICharacter* bob = new Character("bob");
+me->use(0, *bob);
+me->use(1, *bob);
+delete bob;
+delete me;
+delete src;
+return 0;
 }

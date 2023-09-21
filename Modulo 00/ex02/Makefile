@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = Account.cpp tests.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = tests
+NAME = tempodimerda
 
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) $?

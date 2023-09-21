@@ -1,9 +1,10 @@
-CC = g++
+CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp \
+		Character.cpp MateriaSource.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = diamondtrap 
+NAME = interface
 
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) $<

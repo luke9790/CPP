@@ -1,9 +1,9 @@
-CC = g++
+CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = serenamylove
+NAME = worldonfire
 
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) $<

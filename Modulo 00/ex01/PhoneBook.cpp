@@ -13,7 +13,7 @@ PhoneBook::~PhoneBook(void) {
 }
 
 void PhoneBook::addContact(void) {
-    if(this->i == 8)
+    if(this->i >= 8)
         std::cout << "Attention: this contact will replace an existing one" << std::endl;
     this->contatto[this->i % 8].init((this->i % 8) + 1);
     this->i++;

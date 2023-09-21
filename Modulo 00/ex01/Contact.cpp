@@ -24,26 +24,17 @@ static void    ft_fill_line(std::string out, std::string *in)
     *in = tmp;
 }
 
-static int         ft_is_phonenumber(std::string pn) {
+static int         ft_is_phonenumber(std::string pn)
+{
     int i;
     
-    if ((!std::isdigit(pn[0]) && pn[0] != '+') || (pn[0] == '+' && !std::isdigit(pn[1])))
-    {
-        std::cout << "Please enter a valid number (no brackets, only '+' and digits allowed)" << std::endl;        
-        return (false);
-    }
-    for (i = 1; pn[i]; i++)
+    for (i = 0; pn[i]; i++)
     {
         if (!std::isdigit(pn[i]))
         {
-            std::cout << "Please enter a valid number (no brackets, only '+' and digits allowed)" << std::endl;
+            std::cout << "Please enter a valid number (only digits allowed)" << std::endl;
             return (false);
         }
-    }
-    if ((pn[0] == '+' && i < 4) || i < 3)
-    {
-        std::cout << "Please enter a valid number (min 3 digits)" << std::endl;
-        return (false);
     }
     return (true);
 }

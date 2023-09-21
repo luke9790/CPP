@@ -1,19 +1,47 @@
-#include <iostream>
-#include "./FragTrap.hpp"
+#include "./Cat.hpp"
+#include "./Dog.hpp"
+#include "./WrongCat.hpp"
 
 int main()
 {
-    FragTrap fragtrap1("Frag1");
-    FragTrap fragtrap2(fragtrap1);
-    FragTrap fragtrap3("Frag2");
 
-    fragtrap1.attack("nemico1");
-    fragtrap2.takeDamage(100);
-    fragtrap2.beRepaired(10);
+AAnimal animale;
+const AAnimal* j = new Dog();
+std::cout << "\nfine cane\n" << std::endl;
+const AAnimal* i = new Cat();
+std::cout << "\nfine gatto\n" << std::endl;
+delete j;//should not create a leak
+delete i;
 
-    fragtrap2.attack("nemico2");
-    fragtrap3.takeDamage(5);
-    fragtrap3.attack("nemico3");
-    fragtrap1.highFivesGuys();
-    return 0;
+std::cout << "\nfine due animali\n" << std::endl;
+
+// usando i puntatori
+std::cout << "\ntest coi puntatori\n" << std::endl;
+
+AAnimal* zoo2[10]; // Array di puntatori ad Animal
+int a2 = 0;
+
+while (a2 < 5)
+{
+	zoo2[a2] = new Dog(); // Usando new per creare nuovi oggetti Dog
+	a2++;
+}
+
+std::cout << "\nfine cani\n" << std::endl;
+
+while (a2 < 10)
+{
+    zoo2[a2] = new Cat(); // Usando new per creare nuovi oggetti Cat
+    a2++;
+}
+
+std::cout << "\nfine gatti\n" << std::endl;
+
+// Deallocazione dei puntatori
+for (int i = 0; i < 10; i++)
+{
+	delete zoo2[i];
+}
+
+return 0;
 }

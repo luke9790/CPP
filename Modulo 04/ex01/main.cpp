@@ -18,12 +18,14 @@ int a = 0;
 while(a < 5)
 {
 	zoo[a] = Dog();
+	std::cout << "\nassegnato un cane allo zoo\n" << std::endl;
 	a++;
 }
 std::cout << "\nfine cani\n" << std::endl;
 while(a < 10)
 {
 	zoo[a] = Cat();
+	std::cout << "\nassegnato un gatto allo zoo\n" << std::endl;
 	a++;
 }
 std::cout << "\nfine gatti\n" << std::endl;
@@ -37,6 +39,7 @@ int a2 = 0;
 while (a2 < 5)
 {
 	zoo2[a2] = new Dog(); // Usando new per creare nuovi oggetti Dog
+	std::cout << "\nassegnato un NUOVO cane allo zoo2\n" << std::endl;
 	a2++;
 }
 
@@ -45,6 +48,7 @@ std::cout << "\nfine cani\n" << std::endl;
 while (a2 < 10)
 {
     zoo2[a2] = new Cat(); // Usando new per creare nuovi oggetti Cat
+	std::cout << "\nassegnato un NUOVO gatto allo zoo2\n" << std::endl;
     a2++;
 }
 
