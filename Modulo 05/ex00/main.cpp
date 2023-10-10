@@ -2,42 +2,53 @@
 
 int main()
 {
-	Bureaucrat loli("gino", 10);
-	Bureaucrat popi = loli;
-	Bureaucrat koki;
-	Bureaucrat hohi(popi);
+    
+    Bureaucrat Supremo("Number one", 1);
+    Bureaucrat Merda("Number 150", 150);
 
 	try
-	{
-		Bureaucrat toti("alpi", 200);
-	}
-	catch(const std::exception& ex)
-	{
-		std::cerr << ex.what() << std::endl;
-	}
+    {
+        Bureaucrat okay("cento", 100);
+        std::cout << okay << std::endl;
 
-	loli.upGrade(2);
-	hohi.downGrade(5);
-	std::cout << loli << std::endl;
-	std::cout << popi << std::endl;
-	std::cout << koki << std::endl;
-	std::cout << hohi << std::endl;
+        okay.GetPromotion(90);
+        std::cout << okay << std::endl;
 
+        okay.GetDemotion(90);
+        std::cout << okay << std::endl;
+
+        okay.GetPromotion(150);
+        std::cout << okay << std::endl;
+	}
+	catch (std::exception& e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
+	std::cout << "\n...\n" << std::endl;
 	try
-	{
-		loli.downGrade(100);
-		std::cout << loli << std::endl;
-		popi.upGrade(1);
-		std::cout << popi << std::endl;
-		koki.downGrade(0);
-		std::cout << koki << std::endl;
-		hohi.upGrade(5);
-		std::cout << hohi << std::endl;
-	}
-	catch(const std::exception& ex)
-	{
-		std::cerr << ex.what() << std::endl;
-	}
+    {
+        Merda.GetDemotion(15);
+        std::cout << Merda << std::endl;
+    }
+    catch (std::exception& e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
+	std::cout << "\n...\n" << std::endl;
+	try
+    {
+        Supremo.GetDemotion(15);
+        std::cout << Supremo << std::endl;
 
-	return 0;
+        Bureaucrat copy = Bureaucrat(Supremo);
+        std::cout << copy << std::endl;
+
+    }
+    catch (std::exception& e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
+    return 0;
 }
+
+

@@ -1,9 +1,9 @@
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRCS = main.cpp Bureaucrat.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = Bureaucrat
+NAME = Bureaucrat01
 
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) $<
