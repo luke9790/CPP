@@ -1,20 +1,14 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void): AForm("RobotomyRequestForm", 72, 45), _target("RobotomyRequestForm") {
-	std::cout << "[RobotomyRequestForm] constructor call" << std::endl;
-}
+RobotomyRequestForm::RobotomyRequestForm(void): AForm("RobotomyRequestForm", 72, 45), _target("RobotomyRequestForm") 
+{}
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target): AForm(target, 72, 45), _target(target) {
-	std::cout << "[RobotomyRequestForm] constructor call" << std::endl;
-}
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target): AForm(target, 72, 45), _target(target) 
+{}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& raw) : AForm(raw._target, 72, 45) {
-	std::cout << "[RobotomyRequestForm] copy constructor call" << std::endl;
-}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& raw) : AForm(raw._target, 72, 45) {}
 
-RobotomyRequestForm::~RobotomyRequestForm( ) {
-	std::cout << "[RobotomyRequestForm] destructor call" << std::endl;
-}
+RobotomyRequestForm::~RobotomyRequestForm( ) {}
 
 RobotomyRequestForm RobotomyRequestForm::operator=(const RobotomyRequestForm& raw) {
 	(void)raw;
@@ -23,7 +17,7 @@ RobotomyRequestForm RobotomyRequestForm::operator=(const RobotomyRequestForm& ra
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-    if (!this->AForm::getSigned( )) {
+    if (!this->AForm::getIsSigned( )) {
         throw(FormNotSign( ));
         return ;
     }

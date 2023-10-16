@@ -7,22 +7,22 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : Name(name) {
 			throw(Bureaucrat::GradeTooHighException( ));
 		if (grade > 150)
 			throw (Bureaucrat::GradeTooLowException( ));
-		_grade = grade;
+		Grade = grade;
 	} catch (const std::exception& e) {
-		_grade = 150;
+		Grade = 150;
 		std::cout << e.what( ) << "so: ";
-		std::cout << Name << " is set by default to " << _grade << std::endl;
+		std::cout << Name << " is set by default to " << Grade << std::endl;
 		return;
 	}
 }
 
 Bureaucrat::~Bureaucrat(void) { };
 
-Bureaucrat::Bureaucrat(const Bureaucrat& raw) : Name(raw.Name), _grade(raw._grade) { }
+Bureaucrat::Bureaucrat(const Bureaucrat& raw) : Name(raw.Name), Grade(raw.Grade) { }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat&raw) {
 	if (this != &raw) {
-		_grade = raw.getGrade( );
+		Grade = raw.getGrade( );
 	}
 	return (*this);
 }
@@ -37,15 +37,15 @@ const std::string Bureaucrat::getName(void) const {
 }
 
 int Bureaucrat::getGrade (void) const {
-	return (_grade);
+	return (Grade);
 }
 
 void Bureaucrat::getPromotion(int val) {
 	try {
-		if (_grade - val < 1)
+		if (Grade - val < 1)
 			throw (Bureaucrat::GradeTooHighException( ));
 		else
-			_grade -= val;
+			Grade -= val;
 	} catch (const Bureaucrat::GradeTooHighException& e) {
 		std::cout << e.what( ) << std::endl; 
 	}
@@ -53,10 +53,10 @@ void Bureaucrat::getPromotion(int val) {
 
 void Bureaucrat::getDemotion(int val) {
 	try {
-		if (_grade + val > 150)
+		if (Grade + val > 150)
 			throw (Bureaucrat::GradeTooLowException( ));
 		else
-			_grade += val;
+			Grade += val;
 	} catch (const Bureaucrat::GradeTooLowException& e) {
 		std::cout << e.what( ) << std::endl; 
 	}

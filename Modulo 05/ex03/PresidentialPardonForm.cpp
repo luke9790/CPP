@@ -1,21 +1,13 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void): AForm("PresidentialPardonForm", 25, 5), _target("PresidentialPardonForm") {
-	std::cout << "[PresidentialPardonForm] constructor call" << std::endl;
-}
+PresidentialPardonForm::PresidentialPardonForm(void): AForm("PresidentialPardonForm", 25, 5), _target("PresidentialPardonForm") {}
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string& target): AForm(target, 25, 5), _target(target) {
-	std::cout << "[PresidentialPardonForm] constructor call" << std::endl;
-}
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target): AForm(target, 25, 5), _target(target) {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& raw) : AForm(raw._target, 25, 5) {
-	std::cout << "[PresidentialPardonForm] copy constructor call" << std::endl;
-}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& raw) : AForm(raw._target, 25, 5) {}
 
-PresidentialPardonForm::~PresidentialPardonForm( ) {
-	std::cout << "[PresidentialPardonForm] destructor call" << std::endl;
-}
+PresidentialPardonForm::~PresidentialPardonForm( ) {}
 
 PresidentialPardonForm PresidentialPardonForm::operator=(const PresidentialPardonForm& raw) {
 	(void)raw;
@@ -24,7 +16,7 @@ PresidentialPardonForm PresidentialPardonForm::operator=(const PresidentialPardo
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-    if (!this->AForm::getSigned( )) {
+    if (!this->AForm::getIsSigned( )) {
         throw(FormNotSign( ));
         return ;
     }

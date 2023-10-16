@@ -24,7 +24,7 @@ ShrubberyCreationForm ShrubberyCreationForm::operator=(const ShrubberyCreationFo
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-    if (!this->AForm::getSigned( )) {
+    if (!this->AForm::getIsSigned( )) {
         throw(FormNotSign( ));
         return ;
     }

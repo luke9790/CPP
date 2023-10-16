@@ -10,15 +10,15 @@ class AForm;
 class Bureaucrat {
 	private:
 		const std::string	Name;
-		int					_grade;
+		int					Grade;
 
 		Bureaucrat(void);
 	public:
 		Bureaucrat(const std::string name, int grade);
 		Bureaucrat(const Bureaucrat&);
+		Bureaucrat& operator=(const Bureaucrat&);
 		~Bureaucrat(void);
 		
-		Bureaucrat& operator=(const Bureaucrat&);
 
 		const std::string getName(void) const;
 		int getGrade(void) const;

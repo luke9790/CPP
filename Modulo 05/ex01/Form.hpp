@@ -8,20 +8,20 @@ class Form
 {
 private:
     const std::string Name;
-    bool Signed;
-    const int GradeRequiredToSign;
-    const int GradeRequiredToExecute;
+    bool isSigned;
+    const int GradeToSign;
+    const int GradeToExec;
 
 public:
-    Form(std::string Name, int GradeRequiredToSign, int GradeRequiredToExecute);
+    Form(std::string Name, int GradeToSign, int GradeToExec);
     Form(const Form& copy);
     Form& operator=(const Form& assign);
     ~Form();
 
     std::string getName() const;
-    bool isSigned() const;
-    int getGradeRequiredToSign() const;
-    int getGradeRequiredToExecute() const;
+    bool getIsSigned() const;
+    int getGradeToSign() const;
+    int getGradeToExec() const;
     void beSigned(const Bureaucrat& bureaucrat);
 
     class GradeTooHighException : public std::exception {

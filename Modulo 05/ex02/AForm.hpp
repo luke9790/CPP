@@ -9,7 +9,7 @@ class Bureaucrat;
 class AForm {
 	private:
 		const std::string	Name;
-		bool		isSigned;
+		bool		IsSigned;
 		const int			gradeToSign;
 		const int			gradeToExec;
 		
@@ -23,7 +23,7 @@ class AForm {
 		AForm& operator=(const AForm&);
 
 		const std::string getName(void) const;
-		bool getSigned(void) const;
+		bool getIsSigned(void) const;
 		int getGradeToSign(void) const;
 		int getGradeToExecute(void) const;
 

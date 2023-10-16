@@ -23,11 +23,11 @@ int main()
         try
         {
             john.GetPromotion(10);
-            std::cout << "\nJohn promoted:" << std::endl;
+            std::cout << "\nJohn promoted 10 levels:" << std::endl;
             std::cout << john << std::endl;
 
             alice.GetDemotion(20);
-            std::cout << "\nAlice demoted:" << std::endl;
+            std::cout << "\nAlice demoted 20 levels:" << std::endl;
             std::cout << alice << std::endl;
         }
         catch (const std::exception& e)
@@ -35,7 +35,7 @@ int main()
             std::cout << "Exception: " << e.what() << std::endl;
         }
 
-        // Attempt to sign forms with upgraded bureaucrats
+        std::cout << "\nLet's try to sign the forms:" << std::endl;
         try
         {
             john.signForm(taxForm);
