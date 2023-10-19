@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/19 11:18:33 by lmasetti          #+#    #+#             */
+/*   Updated: 2023/10/19 11:27:07 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 
@@ -32,16 +44,16 @@ class ScalarConverter
 		
 		static void convert(std::string);
 
-		static void	validTypo(std::string);
-		static void	detectTypo(std::string);
-		static bool detectOverfloa(size_t);
+		static void	validInput(std::string);
+		static void	detectTypeOfInput(std::string);
+		static bool changeOverfloated(size_t);
 
-		static void detectInf(std::string);
+		static void limitcases(std::string);
 
-		static void	charTypo(char* num);
-		static void	intTypo(char* num);
-		static void	floatTypo(char* num);
-		static void	doubleTypo(char* num);
+		static void	isAChar(char* num);
+		static void	isAInt(char* num);
+		static void	IsAFloat(char* num);
+		static void	isADouble(char* num);
 };
 
 #endif

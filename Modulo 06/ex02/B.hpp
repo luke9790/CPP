@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 11:36:35 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/19 11:36:37 by lmasetti         ###   ########.fr       */
+/*   Created: 2023/10/19 13:06:44 by lmasetti          #+#    #+#             */
+/*   Updated: 2023/10/19 13:06:45 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
-#include "Data.hpp"
+#ifndef B_HHP
+#define B_HHP
 
-int	main(void)
+#include <iostream>
+#include "Base.hpp"
+
+class B : public  Base
 {
-	Data*		data;
-	uintptr_t	uinptr;
+public:
 
-	data = new Data;
-	uinptr = Serializer::serialize(data);
-	std::cout << "Data pointer is: " << data << std::endl;
-	std::cout << "Uinptr number is: " << uinptr << std::endl;
-	std::cout << "Deserialize point back to: " << Serializer::deserialize(uinptr) << std::endl;
-	delete data;
-	return (0);
-}
+};
+
+#endif

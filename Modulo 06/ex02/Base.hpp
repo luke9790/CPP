@@ -1,23 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/19 11:38:15 by lmasetti          #+#    #+#             */
+/*   Updated: 2023/10/19 13:01:37 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BASE_HPP
 # define BASE_HPP
-
-# include "stdlib.h"
-# include "iostream"
-# include "unistd.h"
-
 
 class Base 
 {
 	public:
-		virtual ~Base(void);
+		virtual ~Base(){};
 };
-
-class A : public Base { };
-class B : public Base { };
-class C : public Base { };
-
-Base*	generate(void);
-void	identify(Base* p);
-void	identify(Base& p);
 
 #endif
