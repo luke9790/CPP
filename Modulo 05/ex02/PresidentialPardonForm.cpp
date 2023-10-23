@@ -1,10 +1,6 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void): AForm("PresidentialPardonForm", 25, 5), _target("PresidentialPardonForm") {
-	std::cout << "[PresidentialPardonForm] constructor call" << std::endl;
-}
-
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target): AForm(target, 25, 5), _target(target) {
 	std::cout << "[PresidentialPardonForm] constructor call" << std::endl;
 }

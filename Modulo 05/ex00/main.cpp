@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/23 10:55:18 by lmasetti          #+#    #+#             */
+/*   Updated: 2023/10/23 14:05:05 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./Bureaucrat.hpp"
 
 int main()
 {
     
     Bureaucrat Supremo("Number one", 1);
-    Bureaucrat Merda("Number 150", 150);
+    Bureaucrat Merda("Number 150", 160);
 	std::cout << Supremo << std::endl;
 	std::cout << Merda << std::endl;
 	try
@@ -43,10 +55,6 @@ int main()
 		std::cout << "Declassamento di 15 livelli\n" << std::endl;
         Supremo.GetDemotion(15);
         std::cout << Supremo << std::endl;
-		std::cout << "\nNuovo burocrate fatto con copy assign\n" << std::endl;
-        Bureaucrat copy = Bureaucrat(Supremo);
-        std::cout << copy << std::endl;
-
     }
     catch (std::exception& e)
     {

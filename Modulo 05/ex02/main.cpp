@@ -5,12 +5,12 @@
 
 int main()
 {
-        Bureaucrat highGradeBureaucrat("Burocrate di alto grado", 1);
-        Bureaucrat lowGradeBureaucrat("Burocrate di basso grado", 150);
-
-        ShrubberyCreationForm shrubberyForm("Tizio, target di Form Shrub");
-        RobotomyRequestForm robotomyForm("Caio, target di Form Robot");
-        PresidentialPardonForm pardonForm("Sempronio, target di Form Pardon");
+    Bureaucrat highGradeBureaucrat("Burocrate di alto grado", 1);
+    Bureaucrat lowGradeBureaucrat("Burocrate di basso grado", 150);
+   
+    ShrubberyCreationForm shrubberyForm("Tizio, target di Form Shrub");
+    RobotomyRequestForm robotomyForm("Caio, target di Form Robot");
+    PresidentialPardonForm pardonForm("Sempronio, target di Form Pardon");
     try
     {
         std::cout << "\nTentiamo di eseguire un form non firmato\n" << std::endl;
@@ -45,11 +45,10 @@ int main()
 
 		std::cout << "\n...\n" << std::endl;
         std::cout << "Proviamo a eseguire alcuni form con burocrati diversi\n" << std::endl;
-        highGradeBureaucrat.executeForm(shrubberyForm); // Should execute the shrubbery creation form
-        lowGradeBureaucrat.executeForm(robotomyForm);   // Should attempt robotomization
+        highGradeBureaucrat.executeForm(shrubberyForm);
+        lowGradeBureaucrat.executeForm(robotomyForm);
 		std::cout << "\n...\n" << std::endl;
-        // Attempt to execute a form with low-grade bureaucrat
-        lowGradeBureaucrat.executeForm(pardonForm); // Should throw GradeTooLowException
+        lowGradeBureaucrat.executeForm(pardonForm);
     }
     catch (const std::exception& e)
     {

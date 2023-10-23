@@ -1,13 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/23 10:55:14 by lmasetti          #+#    #+#             */
+/*   Updated: 2023/10/23 14:06:56 by lmasetti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(std::string Name, int Grade) : Name(Name)
 {
-    if (Grade < 1)
-        throw Bureaucrat::GradeTooHighException();
-    else if (Grade > 150)
-        throw Bureaucrat::GradeTooLowException();
-    else
-        this->Grade = Grade;
+	try
+	{
+		if (Grade < 1)
+			throw Bureaucrat::GradeTooHighException();
+		else if (Grade > 150)
+			throw Bureaucrat::GradeTooLowException();
+		else
+			this->Grade = Grade;
+	}
+	catch (std::exception& e){}
 }
 
 Bureaucrat::~Bureaucrat()

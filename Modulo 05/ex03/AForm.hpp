@@ -17,11 +17,10 @@ class AForm
 		AForm( );
 	public:
 		AForm(const std::string&, int, int);
-		AForm(const std::string&, int);
-		AForm(const AForm&);
+		AForm(const AForm& raw);
 		virtual ~AForm();
 
-		AForm& operator=(const AForm&);
+		AForm& operator=(const AForm& raw);
 
 		const std::string getName(void) const;
 		bool getIsSigned(void) const;

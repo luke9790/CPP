@@ -18,6 +18,13 @@ Form::Form(const Form& copy)
 {
 }
 
+Form& Form::operator=(const Form& assign)
+{
+	if (this != &assign)
+		this->isSigned = assign.isSigned;
+	return *this;
+}
+
 std::string Form::getName() const
 {
     return Name;

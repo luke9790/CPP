@@ -15,14 +15,6 @@ AForm::AForm(const std::string& name, int sing, int execute) : Name(name), IsSig
 
 }
 
-AForm::AForm(const std::string& name, int sing) : Name(name), IsSigned(false), gradeToSign(sing), gradeToExec(150)
-{
-    if (gradeToSign < 0)
-        throw(GradeTooHighException( ));
-    if (gradeToSign > 150)
-        throw(GradeTooLowException( ));
-}
-
 AForm::AForm(const AForm &raw) : Name(raw.Name), IsSigned(raw.IsSigned), gradeToSign(raw.gradeToSign), gradeToExec(raw.gradeToExec)
 {
 

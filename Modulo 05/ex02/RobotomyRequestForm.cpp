@@ -1,10 +1,5 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void): AForm("RobotomyRequestForm", 72, 45), _target("RobotomyRequestForm")
-{
-	std::cout << "[RobotomyRequestForm] constructor call" << std::endl;
-}
-
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target): AForm(target, 72, 45), _target(target)
 {
 	std::cout << "[RobotomyRequestForm] constructor call" << std::endl;
