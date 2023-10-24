@@ -6,231 +6,200 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 11:18:23 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/19 11:27:07 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:59:13 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-char			ScalarConverter::_char;
-int				ScalarConverter::_int;
-float			ScalarConverter::_float;
-double			ScalarConverter::_double;
-long long int	ScalarConverter::_temp;
-int				ScalarConverter::_precision;
+char ScalarConverter::_char;
+int ScalarConverter::_int;
+float ScalarConverter::_float;
+double ScalarConverter::_double;
+bool ScalarConverter::_err;
+bool ScalarConverter::_inf;
 
-ScalarConverter::ScalarConverter(void) { };
+ScalarConverter::ScalarConverter(){}
 
-ScalarConverter::ScalarConverter(ScalarConverter& raw) 
+ScalarConverter::~ScalarConverter(){}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& src)
 {
-	(void)raw;
+	*this = src;
 }
 
-ScalarConverter::~ScalarConverter(void) { };
-
-ScalarConverter ScalarConverter::operator=(ScalarConverter& raw) 
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& assign)
 {
-	(void)raw;
-	return (*this);
-}
-
-void ScalarConverter::convert (std::string input) 
-{
-    std::stringstream oss;
-    std::string str;
-
-	precision(input);
-	limitcases(input); 
-	validInput(input);
-	detectTypeOfInput(input);
-
-	if (changeOverfloated(0) != true) 
+	if (this != &assign)
 	{
-		if (_char < 32 && _char != 127)
-			std::cout << "char: Non displayable" << std::endl;
-		else
-			std::cout << "char: '" << _char << "'" << std::endl;
+		_char = assign._char;
+		_int = assign._int;
+		_float = assign._float;
+		_double = assign._double;
+		_err = assign._err;
+		_inf = assign._inf;
 	}
-
-	if (changeOverfloated(1) != true)
-		std::cout << "int: " << _int << std::endl;
-
-	oss << _float;
-	str = oss.str( );
-	if (changeOverfloated(2) != true) 
-	{
-		if (!std::abs(_float - round(_float)) && str.find("+") == std::string::npos)
-			std::cout << "float: " << _float << ".0f" << std::endl;
-		else
-			std::cout << "float: " << std::setprecision(_precision) << _float << "f" << std::endl;
-	}
-
-	oss << _double;
-	str = oss.str( );
-	if (changeOverfloated(3) != true)
-	{
-		if (!std::abs(_double - round(_double)) && str.find("+") == std::string::npos)
-			std::cout << "double: " << _double << ".0" << std::endl;
-		else
-			std::cout << "double: " << std::setprecision(_precision) << _double << std::endl;
-	}
+	return *this;
 }
 
-void ScalarConverter::precision(std::string input) 
+bool isInt(const std::string& input)
 {
-	if (input.find('.') != std::string::npos && input.find('f') != std::string::npos)
-			_precision = input.size() - input.find('.') - 2;
-	else if (input.find('.') != std::string::npos)
-			_precision = input.size() - input.find('.') - 1;
-	if (_precision < 1)
-		_precision = 1;
+    std::stringstream stream(input);
+	int i;
+    stream >> i;
+    return stream.eof() && !stream.fail();
 }
 
-bool ScalarConverter::changeOverfloated(size_t i) 
+bool isFloat(const std::string& input)
 {
-	switch (i)
-	{
-		case 0:
-			if (_temp != _char)
-				return (std::cout << "char: overflow"<< std::endl, true);
-			break ;
-		case 1:
-			if (_temp != _int)
-				return (std::cout << "int: overflow" << std::endl, true);
-			break ;
-		case 2:
-			if (std::isinf(_float))
-				return (std::cout << "float: overflow" << std::endl, true);
-			break ;
-		case 3:
-			if (std::isinf(_double))
-				return (std::cout << "double: overflow" << std::endl, true);
-			break ;
-	}
-	return(false);
+	std::string trim = input;
+	trim.erase(trim.length() - 1);
+    std::stringstream stream(trim);
+	float f;
+    stream >> f;
+    return stream.eof() && !stream.fail();
 }
 
-void ScalarConverter::limitcases(std::string input)
- {
-	if (input == "-inff" || input == "-inf")
-	{
-		std::cout << "char: impossible"<< std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: -inff" << std::endl;
-		std::cout << "double: -inf" << std::endl;
-		exit(0);
-	}
-	if (input == "+inff" || input == "+inf")
-	{
-		std::cout << "char: impossible"<< std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: +inff" << std::endl;
-		std::cout << "double: +inf" << std::endl;
-		exit(0);
-	}
-	if (input == "nanf" || input == "nan")
-	{
-		std::cout << "char: impossible"<< std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: nanf" << std::endl;
-		std::cout << "double: nan" << std::endl;
-		exit(0);
-	}
-	return ;
-}
-
-void	 ScalarConverter::validInput(std::string input) 
+bool isDouble(const std::string& input)
 {
-	size_t	number_of_chars;
-	size_t	isthereanf;
-	size_t	number_of_dots;
-
-	isthereanf = 0;
-	number_of_dots = 0;
-	if (input.length( ) == 1)
-		return ;
-	if (input.find("f") != std::string::npos && input.at(input.length( ) - 1) == 'f')
-		isthereanf++;
-	number_of_chars = 0;
-	for (unsigned long i = 0; i != input.length( ) - isthereanf; i++)
-	{
-		if (i == 0 && (input.at(i) == '+' || input.at(i) == '-'))
-			;
-		else if (input.at(i) == '.')
-			number_of_dots++;
-		else if (!isdigit(input.at(i)))
-			number_of_chars++;
-	}
-	if (number_of_chars == 0 && number_of_dots < 2)
-		return ;
-	std::cout << "char: impossible" << std::endl;
-	std::cout << "int: impossible" << std::endl;
-	std::cout << "float: nanf" << std::endl;
-	std::cout << "double: nan" << std::endl;
-	exit(1);
+    std::stringstream stream(input);
+	double d;
+    stream >> d;
+    return stream.eof() && !stream.fail();
 }
 
-void ScalarConverter::detectTypeOfInput(std::string input)
- {
-	// len 1, non e' un digit == e' un char
-	if (input.length( ) == 1 && !std::isdigit(input.at(0)))
-		return (isAChar(const_cast<char*>(input.c_str( ))));
-	// se c'e' la f e' un float
-	if (input.find("f") != std::string::npos && input.at(input.length( ) - 1) == 'f')
-		return (IsAFloat(const_cast<char*>(input.c_str( ))));
-	// se c'e' un punto e' un double
-	if (input.find(".") != std::string::npos)
-		return (isADouble(const_cast<char*>(input.c_str( ))));
-	// se non e' nessuno dei precedenti e' un int
-	return (isAInt(const_cast<char*>(input.c_str( ))));
-}
-
-void ScalarConverter::IsAFloat(char* input) 
+void ScalarConverter::charConv(const std::string& input)
 {
-	_temp = strtoll(input, NULL, 10);
-
-	_float = atof(input);
-	_char = static_cast<char>(_float);
-	_int = static_cast<int>(_float);
-	_double = static_cast<double>(_float);
-
-	if(_temp != _float)
-		ScalarConverter::isADouble(input);
-}
-
-void ScalarConverter::isADouble(char* input) 
-{
-	_temp = strtoll(input, NULL, 10);
-
-	_double = atof(input);
-	_char = static_cast<char>(_double);
-	_int = static_cast<int>(_double);
-	_float = static_cast<float>(_double);
-
-}
-
-void ScalarConverter::isAChar(char* input)
-{
-
-	_char = input[0];
+	
+	_char = static_cast<char>(input[0]);
 	_int = static_cast<int>(_char);
 	_float = static_cast<float>(_char);
 	_double = static_cast<double>(_char);
-
-	_temp = _int;
 }
 
-void ScalarConverter::isAInt(char* input)
+void ScalarConverter::intConv(const std::string& input)
 {
-	// convertiamo in un long long int
-	_temp = strtoll(input, NULL, 10);
 
-	_int = atoi(input);
+	_int = std::strtol(input.c_str(), 0, 10);
+	if (errno == ERANGE){
+		_err = true;
+		return ;
+	}
 	_char = static_cast<char>(_int);
 	_float = static_cast<float>(_int);
 	_double = static_cast<double>(_int);
+}
 
-	// se non sono uguali e' in overflow
-	if(_temp != _int)
-		ScalarConverter::IsAFloat(input);
+void ScalarConverter::floatConv(const std::string& input)
+{
+
+	_float = std::strtof(input.c_str(), 0);
+	if (errno == ERANGE){
+		_err = true;
+		return ;
+	}
+	_char = static_cast<char>(_float);
+	_int = static_cast<int>(_float);
+	_double = static_cast<double>(_float);
+}
+
+void  ScalarConverter::doubleConv(const std::string& input)
+{
+
+	_double = std::strtod(input.c_str(), 0);
+	if (errno == ERANGE){
+		_err = true;
+		return ;
+	}
+	_char = static_cast<char>(_double);
+	_int = static_cast<int>(_double);
+	_float = static_cast<float>(_double);
+}
+
+int precisionFinder(const std::string& input)
+{
+	size_t pos = 0;
+	size_t trim = 1;
+	if (input[input.length() - 1] == 'f')
+		trim++;
+	pos = input.find('.');
+	if (pos != input.npos)
+		return input.length() - pos - trim;
+	return 1;
+}
+
+void ScalarConverter::PrintConv(const std::string& input)
+{
+    std::cout << "Char: ";
+    if (isprint(_char) && !_inf && _int > std::numeric_limits<char>::min() && _int < std::numeric_limits<char>::max())
+        std::cout << "'" << _char << "'" << std::endl;
+    else if (!_err && !_inf && _int > std::numeric_limits<char>::min() && _int < std::numeric_limits<char>::max())
+        std::cout << "Non displayable" << std::endl;
+    else if (_err || _inf || _int < std::numeric_limits<char>::min() || _int > std::numeric_limits<char>::max())
+        std::cout << "impossible" << std::endl;
+
+    std::cout << "Int: ";
+    if (!_err && !_inf)
+	{
+        if (_int > std::numeric_limits<int>::min() && _int < std::numeric_limits<int>::max())
+            std::cout << _int << std::endl;
+        else
+            std::cout << "overflow" << std::endl;
+    } 
+	else 
+        std::cout << "impossible" << std::endl;
+
+    std::cout << "Float: ";
+    if (!_err && !_inf) 
+	{
+        if (_float > -FLT_MAX && _float < FLT_MAX)
+            std::cout << std::fixed << std::setprecision(precisionFinder(input)) << _float << "f" << std::endl;
+        else
+            std::cout << "overflow" << std::endl;
+    }
+	else if (_inf)
+        std::cout << (input[0] == '-' ? "-" : "+") << "inff" << std::endl;
+    else
+        std::cout << "nanf" << std::endl;
+
+    std::cout << "Double: ";
+    if (!_err && !_inf)
+	{
+        if (_double > -DBL_MAX && _double < DBL_MAX)
+            std::cout << std::fixed << std::setprecision(precisionFinder(input)) << _double << std::endl;
+        else
+            std::cout << "overflow" << std::endl;
+    } 
+	else if (_inf)
+        std::cout << (input[0] == '-' ? "-" : "+") << "inf" << std::endl;
+    else
+        std::cout << "nan" << std::endl;
+}
+
+void ScalarConverter::FindType(const std::string& input){
+	
+	
+	if (input.find("nan") != input.npos)
+		_err = true;
+	else if (input.find("inf") != input.npos && input.length() <= 5)
+		_inf = true;
+	if (input.length() == 1 && !isdigit(static_cast<unsigned char>(input[0])))
+		charConv(input);
+	else if (isInt(input))
+		intConv(input);
+	else if (input[input.length() - 1] == 'f' && isFloat(input))
+		floatConv(input);
+	else if (isDouble(input))
+		doubleConv(input);
+	else
+		_err = true;
+}
+
+void ScalarConverter::convert(const std::string& input)
+{
+
+	_err = false;
+	_inf = false;
+	FindType(input);
+	PrintConv(input);
 }

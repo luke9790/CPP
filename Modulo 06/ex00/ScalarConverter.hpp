@@ -6,54 +6,46 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 11:18:33 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/19 11:27:07 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:56:11 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#define SCALARCONVERTER_HPP
 
-# include "iostream"
-# include "iomanip"
-# include "cstdlib"
-# include "climits"
-# include "cfloat"
-# include "string"
-# include "sstream"
-# include "string"
-# include "cmath"
+#include <iostream>
+#include <string>
+#include <limits>
+#include <cfloat>
+#include <cerrno>
+#include <stdlib.h>
+#include <iomanip>
+#include <sstream>
 
 class ScalarConverter
 {
-	private:
+private:
 
-		static char				_char;
-		static int				_int;
-		static float			_float;
-		static double			_double;
-		static long long int	_temp;
-		static int				_precision;
+	ScalarConverter();
+	ScalarConverter(const ScalarConverter& src);
+	~ScalarConverter();
+	ScalarConverter& operator=(const ScalarConverter& assign);
 
-		ScalarConverter(void);
-		~ScalarConverter(void);
-		ScalarConverter(ScalarConverter&);
-		ScalarConverter operator=(ScalarConverter&);
-	public:
+	static char _char;
+	static int _int;
+	static float _float;
+	static double _double;
+	static bool _err;
+	static bool _inf;
 
-		static void precision(std::string);
-		
-		static void convert(std::string);
-
-		static void	validInput(std::string);
-		static void	detectTypeOfInput(std::string);
-		static bool changeOverfloated(size_t);
-
-		static void limitcases(std::string);
-
-		static void	isAChar(char* num);
-		static void	isAInt(char* num);
-		static void	IsAFloat(char* num);
-		static void	isADouble(char* num);
+public:
+	static void convert(const std::string& src);
+	static void FindType(const std::string& input);
+	static void charConv(const std::string& src);
+	static void intConv(const std::string& src);
+	static void floatConv(const std::string& src);
+	static void doubleConv(const std::string& src);
+	static void PrintConv(const std::string& src);
 };
 
 #endif
