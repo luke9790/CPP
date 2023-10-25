@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 11:37:15 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/19 13:06:12 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:32:01 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ Base*	generate(void)
 	return (NULL);
 }
 
+/*
+dynamic_cast is an operator used for safe type casting during runtime. 
+It primarily works with polymorphic classes. The primary purpose of dynamic_cast
+is to ensure that a downcast (from a base class pointer/reference to a
+derived class pointer/reference) is valid and safe.
+*/
+
 void	identify(Base* p)
 {
 	if (dynamic_cast<A*>(p))
@@ -61,6 +68,13 @@ void	identify(Base* p)
 	}
 	std::cout << "Impossibile identificare il puntatore" << std::endl;
 }
+
+/*
+we are checking the type of the class by using a reference to a pointer of types A, B, or C, 
+and then you use dynamic_cast to validate if the reference can be cast to the specified derived class type. 
+If the cast succeeds, it means that the object referred to by p is an instance of that derived class. 
+If the cast fails, it means that p does not refer to an instance of the specified derived class type.
+*/
 
 void	identify(Base& p)
 {
@@ -89,16 +103,12 @@ void	identify(Base& p)
 
 int main()
 {
-	Base* rand = generate();
-	identify(rand);
-	identify(*rand);
-	std::cout << "..." << std::endl;
 	for(int i = 1; i < 10; i++)
 	{
-		rand = generate();
+		Base* rand = generate();
 		identify(rand);
 		identify(*rand);
 		std::cout << "..." << std::endl;
+		delete rand;
 	}
-	delete rand;
 }

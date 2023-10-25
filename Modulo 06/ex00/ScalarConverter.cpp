@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 11:18:23 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/24 11:59:13 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:06:36 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& assign)
 	return *this;
 }
 
+// usiamo stringstream per convertire l'input in una stringa formata da
+// caratteri e proviamo a estrarre con >> sul tipo di dato che aspettiamo.
+// se raggiungiamo la fine del file(eof) e non fallisce lo stream, significa
+// che il dato combacia con quanto ci aspettiamo.
+
 bool isInt(const std::string& input)
 {
     std::stringstream stream(input);
@@ -76,6 +81,12 @@ void ScalarConverter::charConv(const std::string& input)
 	_float = static_cast<float>(_char);
 	_double = static_cast<double>(_char);
 }
+
+/*
+errno e' una variabile globale che conserva i codici errori,
+se corrisponde a erange significa che nella conversione abbiamo
+un overflow.
+*/
 
 void ScalarConverter::intConv(const std::string& input)
 {
@@ -115,6 +126,12 @@ void  ScalarConverter::doubleConv(const std::string& input)
 	_int = static_cast<int>(_double);
 	_float = static_cast<float>(_double);
 }
+
+/*
+serve per trovare i numeri dopo la virgola( o meglio il punto),
+quindi la parte decimale dell'input. Viene usata ovviamente solo
+per i float e i double. Se l'input non ha valori decimali resta a 1.
+*/
 
 int precisionFinder(const std::string& input)
 {
