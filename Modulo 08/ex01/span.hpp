@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:25:44 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/20 11:04:31 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:11:47 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,22 @@
 #define SPAN_HPP
 
 #include <vector>
+#include <iostream>
+#include <algorithm>
+#include <stdexcept>
 
 class Span
 {
 private:
-    std::vector<int> numbers;
+    std::vector<int> vettore;
     unsigned int size;
 
 public:
     Span(unsigned int N);
+	Span(const Span& other);
+    Span& operator=(const Span& other);
+	~Span();
+
     void addNumber(int number);
     void addNumbers(const std::vector<int>& newNumbers);
     int shortestSpan();
