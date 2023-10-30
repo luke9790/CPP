@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 11:14:48 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/27 15:37:27 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:34:29 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ void BitcoinExchange::exchanger() const
 		std::getline(iss, targetDate, '|');
 		iss >> listValue;
 		for (std::map<std::string, float>::const_reverse_iterator rit = dataMap.rbegin(); rit != dataMap.rend(); ++rit){
-			if (dateFinder(rit->first, targetDate)){
+			if (dateFinder(rit->first, targetDate))
+			{
 				dataValue = rit->second;
 				break;
 			}

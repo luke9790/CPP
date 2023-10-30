@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:25:17 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/27 15:59:36 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:48:57 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int main(int ac, char **av)
     }
     try
     {
-        PmergeMe::ParsArgs(av);
-        PmergeMe::Time( );
+        PmergeMe::Parsing(av);
+        PmergeMe::Exec( );
     } 
     catch (std::exception& e) 
     {

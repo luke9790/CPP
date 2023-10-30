@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:46:50 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/27 14:49:03 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:08:08 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int ac, char** av)
     }
 	try
 	{
-		RPN::ParsArgs(av[1]);
+		RPN::Parsing(av[1]);
 		RPN::Fill(av[1]);
 	} 
 	catch (std::exception &e) 

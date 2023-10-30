@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:53:40 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/27 15:53:33 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:48:56 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ class PmergeMe
 		PmergeMe(const PmergeMe&);
 		PmergeMe& operator=(const PmergeMe&);
 
-		static std::vector<int>	_vector;
-		static std::deque<int>	_deque;
+		static std::vector<int>	vettore;
+		static std::deque<int>	dique;
 
     public:
 
-		static void ParsArgs(char**);
-		static void	FillContainer(int);
-		static void Time(void);
+		static void Parsing(char** av);
+		static void	FillContainers(int value);
+		static void Exec(void);
 
 		template<typename T>
 		static void PrintContainer(const T& container, const std::string&);
@@ -47,8 +47,8 @@ class PmergeMe
 		template<typename T>
 		static void InsertionSort(T, T);
 
-		template<typename T, typename IT>
-		static void	MergeInsertion(T&, IT, IT);
+		template<typename T, typename TT>
+		static void	MergeInsertionSort(T&, TT, TT);
 };
 
 #endif
