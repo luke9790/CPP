@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 11:14:48 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/30 11:34:29 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:42:50 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& src)
 {
 	if (this != &src){
 		this->dataMap = src.dataMap;
-		this->listPath = src.listPath;
+		this->listPath = src.listPath; 
 	}
 	return *this;
 }
@@ -50,6 +50,11 @@ BitcoinExchange::BitcoinExchange(const std::string& database, const std::string&
 	populateMap(database);
 }
 
+/*
+Leggiamo il nostro database linea per linea. Salviamo la linea su iss e la ridividiamo
+in base alla virgola. Ora possiamo salvare separatamente il valore e la data nella nostra mappa.
+Chiudiamo alla fine il database. */
+
 void BitcoinExchange::populateMap(const std::string& database)
 {
 	std::string line, date;
@@ -64,10 +69,15 @@ void BitcoinExchange::populateMap(const std::string& database)
 	db.close();
 }
 
+// la funzione compare fa il lavoro sporco per noi. Fintanto la prima data e' precedente
+// ritorna vero.
+
 bool dateFinder(const std::string& date1, const std::string& date2)
 {
 	return date1.compare(date2) <= 0;
 }
+
+// controlliamo se la data e' valida con alcuni parametri (non esaustiva)
 
 bool isDateValid(const std::string& date)
 {
@@ -93,6 +103,16 @@ void printer(const std::string& targetDate, const float& dataValue, const float&
 		std::cout << targetDate << " => " << listValue << " = " << std::fixed << std::setprecision(2) << listValue * dataValue << std::endl;
 }
 
+/*
+Apriamo su lst il file salvato su listPath. Con getline leggiamo tutto il file,
+saltando il primo rigo(che riposta la struttura e non i dati). Leggiamo dunque un rigo alla volta.
+Usiamo iss per salvare la riga e usiamo ancora getline per distinguere il prima e il dopo la pipe.
+TargetDate prende la prima parte, Listvalue la seconda. Entriamo nel for loop, dove iteriamo la
+mappa al contrario (reverse iterator, rit) e compariamo la data dove siamo con quella del target.
+Assegniamo quindi la data piu vicina(o la stessa) del database per calcolare il valore.
+Passiamo infine a printer che stampa il necessario e chiudiamo la lista.
+*/
+
 void BitcoinExchange::exchanger() const
 {
 	std::string line, targetDate;
@@ -105,8 +125,9 @@ void BitcoinExchange::exchanger() const
 		std::istringstream iss(line);
 		std::getline(iss, targetDate, '|');
 		iss >> listValue;
-		for (std::map<std::string, float>::const_reverse_iterator rit = dataMap.rbegin(); rit != dataMap.rend(); ++rit){
-			if (dateFinder(rit->first, targetDate))
+		for (std::map<std::string, float>::const_reverse_iterator rit = dataMap.rbegin(); rit != dataMap.rend(); ++rit)
+		{
+			if (dateFinder(rit->first, targetDate)) // se e' falsa siamo andati troppo indietro e riporta la data successiva.
 			{
 				dataValue = rit->second;
 				break;

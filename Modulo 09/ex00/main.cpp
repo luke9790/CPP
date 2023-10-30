@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:25:17 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/27 14:45:54 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:43:37 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int ac, char **av)
 	std::string list = av[1];
 	try
     {
-		BitcoinExchange btc(database, list);
+		BitcoinExchange btc(database, list); // creiamo la nostra classe ma controlliamo anche gli input e popoliamo la mappa.
 		btc.exchanger();
 	}
 	catch(const std::exception& e){ std::cerr << e.what() << std::endl; }
