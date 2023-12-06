@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:07:55 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/07/31 15:07:55 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:54:20 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Weapon::~Weapon(void)
 
 const std::string& Weapon::getType()
 {
-    return ((std::string&)type);
+    return type;
 }
 
 void Weapon::setType(std::string newname)

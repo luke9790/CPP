@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:55:14 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/23 14:06:56 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:56:50 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,18 @@ Bureaucrat::Bureaucrat(std::string Name, int Grade) : Name(Name)
 		else
 			this->Grade = Grade;
 	}
-	catch (std::exception& e){}
+	catch (const Bureaucrat::GradeTooHighException& e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
+	catch (const Bureaucrat::GradeTooLowException& e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+    }
+	catch (const std::exception& e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+    }
 }
 
 Bureaucrat::~Bureaucrat()

@@ -2,14 +2,12 @@
 #include <string>
 #include "./Contact.hpp"
 
-Contact::Contact(void)
+Contact::Contact()
 {
-    return;
 }
 
-Contact::~Contact(void)
+Contact::~Contact()
 {
-    return;
 }
 
 static void    ft_fill_line(std::string out, std::string *in)

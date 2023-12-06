@@ -1,27 +1,19 @@
-#include "Ice.hpp"
-#include "ICharacter.hpp"
-#include "IMateriaSource.hpp"
-#include "Cure.hpp"
-#include "MateriaSource.hpp"
-#include "Character.hpp"
-#include <iostream>
 
-int main()
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
+
+int main( void )
 {
-IMateriaSource* src = new MateriaSource();
-src->learnMateria(new Ice());
-src->learnMateria(new Cure());
-ICharacter* me = new Character("me");
-AMateria* tmp;
-tmp = src->createMateria("ice");
-me->equip(tmp);
-tmp = src->createMateria("cure");
-me->equip(tmp);
-ICharacter* bob = new Character("bob");
-me->use(0, *bob);
-me->use(1, *bob);
-delete bob;
-delete me;
-delete src;
-return 0;
+    DiamondTrap rosso( "Rosso" );
+    DiamondTrap blu( "Blu" );
+
+    rosso.whoAmI();
+    blu.whoAmI();
+
+    rosso.attack( "the air" );
+    rosso.takeDamage( 10 );
+    rosso.beRepaired( 10 );
+
+    return 0;
 }

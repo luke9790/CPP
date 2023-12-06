@@ -1,4 +1,4 @@
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = PhoneBook.cpp Contact.cpp main.cpp

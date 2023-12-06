@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:06:53 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/08/01 10:50:44 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:23:55 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Zombie::Zombie()
 	return;
 }
 
-Zombie::Zombie(const std::string& name) // si usa la copia const per motivi di efficienza (non fa una copia della stringa) e prende anche stringhe const
+Zombie::Zombie(const std::string& name)
 {
 	this->name = name;
 }

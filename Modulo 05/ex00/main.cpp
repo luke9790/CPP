@@ -6,7 +6,7 @@
 /*   By: lmasetti <lmasetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:55:18 by lmasetti          #+#    #+#             */
-/*   Updated: 2023/10/23 14:05:05 by lmasetti         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:57:31 by lmasetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main()
 {
     
     Bureaucrat Supremo("Number one", 1);
-    Bureaucrat Merda("Number 150", 160);
+    Bureaucrat Merda("Number 150", 150);
 	std::cout << Supremo << std::endl;
 	std::cout << Merda << std::endl;
 	try

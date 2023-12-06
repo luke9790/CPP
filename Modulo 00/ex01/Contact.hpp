@@ -15,8 +15,8 @@ private:
     std::string DarkestSecret;
 
 public:
-    Contact(void);
-    ~Contact(void);
+    Contact();
+    ~Contact();
 
     void        init(int i);
     int         GetIndex(void) const;

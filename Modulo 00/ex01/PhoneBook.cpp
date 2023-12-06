@@ -4,22 +4,24 @@
 
 int PhoneBook::i = 0;
 
-PhoneBook::PhoneBook(void) {
-    return ;
+PhoneBook::PhoneBook()
+{
 }
 
-PhoneBook::~PhoneBook(void) {
-    return ;
+PhoneBook::~PhoneBook() 
+{
 }
 
-void PhoneBook::addContact(void) {
+void PhoneBook::addContact(void)
+{
     if(this->i >= 8)
         std::cout << "Attention: this contact will replace an existing one" << std::endl;
     this->contatto[this->i % 8].init((this->i % 8) + 1);
     this->i++;
 }
 
-void ft_print_string(std::string s) {
+void ft_print_string(std::string s)
+{
     if (s.length() < 10)
     {
         for (int i = 10 - s.length(); i; i--)
